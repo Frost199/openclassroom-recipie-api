@@ -52,9 +52,9 @@ app.post('/api/recipes', (req, res, next) => {
         });
 });
 
-//view all about a particular thing
-app.get('/api/stuff/:id', (req, res, next) => {
-    Thing.findOne({
+//view all about a particular recipe
+app.get('/api/recipes/:id', (req, res, next) => {
+    Recipe.findOne({
         _id: req.params.id
     }).then((thing) => {
         res.status(200).json(thing)
