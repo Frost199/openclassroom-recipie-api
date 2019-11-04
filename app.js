@@ -34,10 +34,10 @@ app.use(bodyParser.json());
 app.post('/api/stuff', (req, res, next) => {
     const recipe = new Recipe({
         title: req.body.title,
-        description: req.body.description,
-        imageUrl: req.body.imageUrl,
-        price: req.body.price,
-        userId: req.body.userId
+        ingredients: req.body.ingredients,
+        instructions: req.body.instructions,
+        difficulty: req.body.difficulty,
+        time: req.body.time
     });
     recipe.save()
         .then(() => {
@@ -106,10 +106,10 @@ app.delete('/api/stuff/:id', (req, res, next) => {
 
 
 //View all things
-app.use('/api/stuff', (req, res, next) => {
-    Thing.find()
-        .then((things) => {
-            res.status(200).json(things)
+app.use('/api/recipes', (req, res, next) => {
+    Recipe.find()
+        .then((recipe) => {
+            res.status(200).json(recipe)
         })
         .catch(error => {
             res.status(400).json({
