@@ -88,9 +88,9 @@ app.put('/api/recipes/:id', (req, res, next) => {
         });
 });
 
-//delete a particular thing
-app.delete('/api/stuff/:id', (req, res, next) => {
-   Thing.deleteOne({
+//delete a particular recipe
+app.delete('/api/recipes/:id', (req, res, next) => {
+   Recipe.deleteOne({
        _id: req.params.id
    }).then(() => {
        res.status(200).json({
