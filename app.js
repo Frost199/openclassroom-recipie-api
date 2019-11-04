@@ -30,8 +30,8 @@ app.use((req, res, next) => {
 
 app.use(bodyParser.json());
 
-//Create New thing
-app.post('/api/stuff', (req, res, next) => {
+//Create New Recipe
+app.post('/api/recipes', (req, res, next) => {
     const recipe = new Recipe({
         title: req.body.title,
         ingredients: req.body.ingredients,
@@ -105,7 +105,7 @@ app.delete('/api/stuff/:id', (req, res, next) => {
 
 
 
-//View all things
+//View all recipe in db
 app.use('/api/recipes', (req, res, next) => {
     Recipe.find()
         .then((recipe) => {
