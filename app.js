@@ -65,17 +65,17 @@ app.get('/api/recipes/:id', (req, res, next) => {
     });
 });
 
-//Update a particular thing
-app.put('/api/stuff/:id', (req, res, next) => {
-    const thing = new Thing({
+//Update a particular recipe
+app.put('/api/recipes/:id', (req, res, next) => {
+    const thing = new Recipe({
         _id: req.params.id,
         title: req.body.title,
-        description: req.body.description,
-        imageUrl: req.body.imageUrl,
-        price: req.body.price,
-        userId: req.body.userId
+        ingredients: req.body.ingredients,
+        instructions: req.body.instructions,
+        difficulty: req.body.difficulty,
+        time: req.body.time
     });
-    Thing.updateOne({_id: req.params.id}, thing)
+    Recipe.updateOne({_id: req.params.id}, thing)
         .then(() => {
             res.status(201).json({
                 message: 'Thing updated successfully'
